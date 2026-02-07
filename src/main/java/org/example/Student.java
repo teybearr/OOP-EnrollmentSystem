@@ -34,4 +34,10 @@ public class Student {
     public void setProgram (String program){
         this.program = program;
     }
+
+    public void displayStudent(){
+        System.out.println("\nStudent ID: " + getStudentID());
+        System.out.println("Student Name: " + getStudentName());
+        System.out.println("Program: " + getProgram());
+    }
 }
