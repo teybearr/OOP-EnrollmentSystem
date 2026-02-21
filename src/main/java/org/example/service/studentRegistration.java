@@ -28,7 +28,6 @@ public class studentRegistration {
                 break;
             }
         }
-//        return "Error";
     }
 
     public String removeStudent(Student student){
@@ -40,5 +39,4 @@ public class studentRegistration {
         }
         return "Error";
     }
-
 }
