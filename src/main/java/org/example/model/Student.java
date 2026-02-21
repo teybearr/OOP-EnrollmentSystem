@@ -8,6 +8,10 @@ public class Student {
     public Student(){
     }
 
+    public Student(String studentID){
+        this.studentID=studentID;
+    }
+
     public Student (String studentID, String studentName, String program){
         this.studentID = studentID;
         this.studentName = studentName;
@@ -39,5 +43,14 @@ public class Student {
         System.out.println("\nStudent ID: " + getStudentID());
         System.out.println("Student Name: " + getStudentName());
         System.out.println("Program: " + getProgram());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentID='" + studentID + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", program='" + program + '\'' +
+                '}';
     }
 }

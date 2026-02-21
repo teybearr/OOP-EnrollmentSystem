@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.model.Course;
 import org.example.model.Student;
+import org.example.service.studentRegistration;
 
 import java.util.Scanner;
 
@@ -20,17 +21,18 @@ public class Main {
 //        System.out.print("Enter Program: ");
 //        String prog = jungkook.nextLine();
 
-        Student s1 = new Student();
-        s1.setStudentID("2024374071");
-        s1.setStudentName("Althea Quiatchon");
-        s1.setProgram("BSIT");
-        s1.displayStudent();
+        studentRegistration registration = new studentRegistration();
+        registration.saveStudent(new Student ("2024374071", "Quiatchon, A.", "BSIT"));
+        registration.saveStudent(new Student ("1200014669", "Unknown", "Unknown"));
+        registration.saveStudent(new Student ("2024777777", "Bogart", "BSM"));
 
-        Student s2 = new Student();
-        s2.setStudentID("1200014669");
-        s2.setStudentName("Wreign Hizon");
-        s2.setProgram("BSIT");
-        s2.displayStudent();
+        registration.displayAllStudent();
+
+        registration.updateStudent(new Student("1200014669"));
+
+        registration.removeStudent(new Student ("2024777777"));
+
+        registration.displayAllStudent();
 
         Course c = new Course();
         c.setCourseID("INTEPROG");
