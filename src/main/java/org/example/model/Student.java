@@ -47,10 +47,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentID='" + studentID + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", program='" + program + '\'' +
-                '}';
+        return "Student {" +
+                "ID = '" + studentID + "' | " +
+                "Name = '" + studentName + "' | " +
+                "Program: '" + program + "'}";
     }
 }
+
+//

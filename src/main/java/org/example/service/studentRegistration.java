@@ -10,6 +10,7 @@ public class studentRegistration {
 
     public void saveStudent (Student student){
         studentsList.add(student);
+        System.out.println("Successfully added!");
     }
 
     public void displayAllStudent(){
@@ -25,6 +26,7 @@ public class studentRegistration {
                 String newProg = jungkook.nextLine();
 
                 studentsList.set(i, new Student(student.getStudentID(), newName, newProg));
+                System.out.println("Successfully updated!");
                 break;
             }
         }
@@ -34,7 +36,7 @@ public class studentRegistration {
         for (int i = 0; i<studentsList.size(); i++){
             if (studentsList.get(i).getStudentID().equals(student.getStudentID())){
                 studentsList.remove(i);
-                return "Successfully Deleted";
+                return "Successfully deleted!";
             }
         }
         return "Error";

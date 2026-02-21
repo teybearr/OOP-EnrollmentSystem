@@ -47,10 +47,9 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseID='" + courseID + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", courseProgram='" + courseProgram + '\'' +
-                '}';
+        return "Course {" +
+                "ID = '" + courseID + "' | " +
+                "Name = '" + courseName + "' | " +
+                "Program: '" + courseProgram + "'}";
     }
 }

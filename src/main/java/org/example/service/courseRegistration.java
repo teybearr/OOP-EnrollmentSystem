@@ -9,6 +9,7 @@ public class courseRegistration {
 
     public void save (Course course){
         coursesList.add(course);
+        System.out.println("Successfully added!");
     }
 
     public void displayAll (){
@@ -24,6 +25,7 @@ public class courseRegistration {
                 String newProg = jungkook.nextLine();
 
                 coursesList.set(i, new Course (course.getCourseID(), newName, newProg));
+                System.out.println("Successfully updated!");
                 break;
             }
         }
@@ -33,7 +35,7 @@ public class courseRegistration {
         for (int i = 0; i < coursesList.size(); i++) {
             if (coursesList.get(i).getCourseID().equals(course.getCourseID())) {
                 coursesList.remove(i);
-                return "Successfully Deleted";
+                return "Successfully deleted!";
             }
         }
         return "Error";
