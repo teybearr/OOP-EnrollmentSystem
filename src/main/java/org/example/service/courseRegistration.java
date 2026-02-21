@@ -17,7 +17,7 @@ public class courseRegistration {
 
     public void updateCourse (Course course){
         for (int i=0; i < coursesList.size(); i++){
-            if (coursesList.get(i).getCourseID() == course.getCourseID()){
+            if (coursesList.get(i).getCourseID().equals(course.getCourseID())){
                 System.out.print("Enter new course: ");
                 String newName = jungkook.nextLine();
                 System.out.print("Enter new program: ");
@@ -31,7 +31,7 @@ public class courseRegistration {
 
     public String removeCourse(Course course) {
         for (int i = 0; i < coursesList.size(); i++) {
-            if (coursesList.get(i).getCourseID() == course.getCourseID()) {
+            if (coursesList.get(i).getCourseID().equals(course.getCourseID())) {
                 coursesList.remove(i);
                 return "Successfully Deleted";
             }

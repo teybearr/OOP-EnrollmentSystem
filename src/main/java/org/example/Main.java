@@ -9,43 +9,112 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner jungkook = new Scanner (System.in);
+        Scanner jungkook = new Scanner(System.in);
+        while (true) {
+            System.out.println("[1] Student Registration\n[2] Course Registration");
+            System.out.print("Do you want to register a STUDENT or a COURSE?: ");
+            int choiceRegis = jungkook.nextInt();
 
-//        System.out.print("Enter Student ID: ");
-//        String id = jungkook.nextLine();
-//        System.out.print("Enter Student Name: ");
-//        String name = jungkook.nextLine();
-//        System.out.println("Enter Program: ");
-//        String program = jungkook.nextLine();
-//        System.out.print("Enter Course ID: ");
-//        String cID = jungkook.nextLine();
-//        System.out.print("Enter Course Name: ");
-//        String cName = jungkook.nextLine();
-//        System.out.print("Enter Program: ");
-//        String prog = jungkook.nextLine();
+            while (true) {
+                switch (choiceRegis) {
+                    case 1:
+                        studentRegistration sRegis = new studentRegistration();
+                        boolean sRun = true;
+                        while (sRun) {
+                            System.out.println("\n-- STUDENT REGISTRATION --");
+                            System.out.println("[1] Save Student\n[2] Display Student\n[3] Update Student\n[4] Delete Person\n[5] Exit");
+                            System.out.print("What do you want to do?: ");
+                            int sChoice = jungkook.nextInt();
+                            switch (sChoice) {
+                                case 1:
+                                    System.out.print("Enter Student ID: ");
+                                    String sId = jungkook.next();
+                                    System.out.print("Enter Student Name: ");
+                                    String sName = jungkook.next();
+                                    System.out.print("Enter Program: ");
+                                    String sProg = jungkook.next();
 
-        studentRegistration sRegis = new studentRegistration();
-        sRegis.saveStudent(new Student ("2024374071", "Quiatchon, A.", "BSIT"));
-        sRegis.saveStudent(new Student ("1200014669", "Unknown", "Unknown"));
-        sRegis.saveStudent(new Student ("2024777777", "Bogart", "BSM"));
+                                    sRegis.saveStudent(new Student(sId, sName, sProg));
+                                    break;
+                                case 2:
+                                    sRegis.displayAllStudent();
+                                    break;
+                                case 3:
+                                    System.out.print("Enter Student ID to update: ");
+                                    String updStuId = jungkook.next();
 
-        sRegis.displayAllStudent();
+                                    sRegis.updateStudent(new Student(updStuId));
+                                    break;
+                                case 4:
+                                    System.out.print("Enter Student ID to remove: ");
+                                    String remStuId = jungkook.next();
 
-        sRegis.updateStudent(new Student("1200014669"));
-        sRegis.removeStudent(new Student ("2024777777"));
-        sRegis.displayAllStudent();
+                                    sRegis.removeStudent(new Student(remStuId));
+                                    break;
+                                case 5:
+                                    sRun = false;
+                                    break;
+                                default:
+                                    System.out.println("Please enter a number from 1 to 5 only");
+                                    break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        courseRegistration cRegis = new courseRegistration();
+                        boolean cRun = true;
+                        while (cRun) {
+                            System.out.println("-- COURSE REGISTRATION --");
+                            System.out.println("[1] Save Course\n[2] Display Student\n[3] Update Student\n[4] Delete Person\n[5] Exit");
+                            System.out.print("What do you want to do?: ");
+                            int sChoice = jungkook.nextInt();
+                            switch (sChoice) {
+                                case 1:
+                                    System.out.print("Enter Course ID: ");
+                                    String cID = jungkook.next();
+                                    System.out.print("Enter Course Name: ");
+                                    String cName = jungkook.next();
+                                    System.out.print("Enter Program: ");
+                                    String cProg = jungkook.nextLine();
+                                    jungkook.nextLine();
 
-        // ----------------------------------------------------------------------------------------------------------
+                                    cRegis.save(new Course(cID, cName, cProg));
+                                    break;
+                                case 2:
+                                    cRegis.displayAll();
+                                    break;
+                                case 3:
+                                    System.out.print("Enter Course ID to update: ");
+                                    String updCouId = jungkook.next();
 
-        courseRegistration cRegis = new courseRegistration();
-        cRegis.save(new Course("INTEPROG", "Integrative Programming and Technologies", "BSIT"));
-        cRegis.save(new Course("PATHFI4", "Physical Activity Towards Health and Fitness", "CITE"));
-        cRegis.save(new Course("INFO", "Unknown", "Unknown"));
+                                    cRegis.updateCourse(new Course(updCouId));
+                                    break;
+                                case 4:
+                                    System.out.print("Enter Course ID to remove: ");
+                                    String remCouId = jungkook.next();
 
-        cRegis.displayAll();
-
-        cRegis.updateCourse(new Course("PATHFI"));
-        cRegis.removeCourse(new Course("INFO"));
-        cRegis.displayAll();
+                                    cRegis.removeCourse(new Course(remCouId));
+                                    break;
+                                case 5:
+                                    cRun = false;
+                                    break;
+                                default:
+                                    System.out.println("Please enter a number from 1 to 5 only");
+                                    break;
+                            }
+                        }
+                        break;
+                    default:
+                        System.out.println("Please choose only between 1 and 2.");
+                        break;
+                }
+                break;
+            }
+            System.out.print("Do you want to continue ([0] NO, [1] YES): ");
+            int doneNaBa = jungkook.nextInt();
+            if (doneNaBa == 0) {
+                break;
+            }
+        }
     }
 }

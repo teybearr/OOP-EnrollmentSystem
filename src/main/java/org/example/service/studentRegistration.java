@@ -18,7 +18,7 @@ public class studentRegistration {
 
     public void updateStudent(Student student){
         for (int i=0; i<studentsList.size(); i++){
-            if(studentsList.get(i).getStudentID() == student.getStudentID()) {
+            if(studentsList.get(i).getStudentID().equals(student.getStudentID())) {
                 System.out.print("Enter new student name: ");
                 String newName = jungkook.nextLine();
                 System.out.print("Enter new program: ");
@@ -32,7 +32,7 @@ public class studentRegistration {
 
     public String removeStudent(Student student){
         for (int i = 0; i<studentsList.size(); i++){
-            if (studentsList.get(i).getStudentID() == student.getStudentID()){
+            if (studentsList.get(i).getStudentID().equals(student.getStudentID())){
                 studentsList.remove(i);
                 return "Successfully Deleted";
             }

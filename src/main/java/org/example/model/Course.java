@@ -3,7 +3,7 @@ package org.example.model;
 public class Course {
     private String courseID;
     private String courseName;
-    private String program;
+    private String courseProgram;
 
     public Course(){
     }
@@ -12,10 +12,10 @@ public class Course {
         this.courseID = courseID;
     }
 
-    public Course (String courseID, String courseName, String program){
+    public Course (String courseID, String courseName, String courseProgram){
         this.courseID = courseID;
         this.courseName = courseName;
-        this.program = program;
+        this.courseProgram = courseProgram;
     }
 
     public String getCourseID (){
@@ -32,17 +32,17 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getProgram() {
-        return program;
+    public String getCourseProgram() {
+        return courseProgram;
     }
-    public void setProgram (String program) {
-        this.program = program;
+    public void setCourseProgram(String courseProgram) {
+        this.courseProgram = courseProgram;
     }
 
     public void displayCourse() {
         System.out.println("\nCourse ID: " + getCourseID());
         System.out.println("Course Name: " + getCourseName());
-        System.out.println("Program: " + getProgram());
+        System.out.println("Course Program: " + getCourseProgram());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Course {
         return "Course{" +
                 "courseID='" + courseID + '\'' +
                 ", courseName='" + courseName + '\'' +
-                ", program='" + program + '\'' +
+                ", courseProgram='" + courseProgram + '\'' +
                 '}';
     }
 }
