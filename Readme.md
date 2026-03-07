@@ -9,7 +9,7 @@ to practice the Access Modifiers and Getters/Setters.
 ![ss1.png](src/main/resources/images/ss1.png)
 
 ---
-**2. Inheritance**: Made a *Superclass (Person)* and  Subclasses 
+**2. Inheritance**: Made a *Superclass (Person)* and Subclasses 
 (*Student*, *Course*, and *Instructor*).
 
 ![ss2.png](src/main/resources/images/ss2.png)
