@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner jungkook = new Scanner(System.in);
         while (true) {
-            System.out.println("[1] Student Registration\n[2] Course Registration");
+            System.out.println("\n[1] Student Registration\n[2] Course Registration");
             System.out.print("Do you want to register a STUDENT or a COURSE?: ");
             int choiceRegis = jungkook.nextInt();
 
@@ -28,7 +28,7 @@ public class Main {
                             switch (sChoice) {
                                 case 1:
                                     System.out.print("Enter Student ID: ");
-                                    String sId = jungkook.next();
+                                    int sId = jungkook.nextInt();
                                     System.out.print("Enter Student Name: ");
                                     String sName = jungkook.next();
                                     System.out.print("Enter Program: ");
@@ -41,15 +41,15 @@ public class Main {
                                     break;
                                 case 3:
                                     System.out.print("Enter Student ID to update: ");
-                                    String updStuId = jungkook.next();
+                                    int updStuId = jungkook.nextInt();
 
                                     sRegis.updateStudent(new Student(updStuId));
                                     break;
                                 case 4:
                                     System.out.print("Enter Student ID to remove: ");
-                                    String remStuId = jungkook.next();
+                                    int remStuId = jungkook.nextInt();
 
-                                    sRegis.removeStudent(new Student(remStuId));
+                                    System.out.println(sRegis.removeStudent(new Student(remStuId)));
                                     break;
                                 case 5:
                                     sRun = false;
@@ -64,18 +64,20 @@ public class Main {
                         courseRegistration cRegis = new courseRegistration();
                         boolean cRun = true;
                         while (cRun) {
-                            System.out.println("-- COURSE REGISTRATION --");
-                            System.out.println("[1] Save Course\n[2] Display Student\n[3] Update Student\n[4] Delete Person\n[5] Exit");
+                            System.out.println("\n-- COURSE REGISTRATION --");
+                            System.out.println("[1] Save Course\n[2] Display Course\n[3] Update Course\n[4] Delete Course\n[5] Exit");
                             System.out.print("What do you want to do?: ");
                             int sChoice = jungkook.nextInt();
                             switch (sChoice) {
                                 case 1:
                                     System.out.print("Enter Course ID: ");
-                                    String cID = jungkook.next();
+                                    int cID = jungkook.nextInt();
+                                    jungkook.nextLine();
                                     System.out.print("Enter Course Name: ");
                                     String cName = jungkook.next();
+                                    jungkook.nextLine();
                                     System.out.print("Enter Program: ");
-                                    String cProg = jungkook.nextLine();
+                                    String cProg = jungkook.next();
                                     jungkook.nextLine();
 
                                     cRegis.save(new Course(cID, cName, cProg));
@@ -85,15 +87,15 @@ public class Main {
                                     break;
                                 case 3:
                                     System.out.print("Enter Course ID to update: ");
-                                    String updCouId = jungkook.next();
+                                    int updCouId = jungkook.nextInt();
 
                                     cRegis.updateCourse(new Course(updCouId));
                                     break;
                                 case 4:
                                     System.out.print("Enter Course ID to remove: ");
-                                    String remCouId = jungkook.next();
+                                    int remCouId = jungkook.nextInt();
 
-                                    cRegis.removeCourse(new Course(remCouId));
+                                    System.out.println(cRegis.removeCourse(new Course(remCouId)));
                                     break;
                                 case 5:
                                     cRun = false;
