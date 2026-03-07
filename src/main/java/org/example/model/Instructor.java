@@ -1,5 +1,6 @@
 package org.example.model;
 
-public class Instructor {
+public class Instructor extends Person{
 
+    Course course = new Course();
 }
