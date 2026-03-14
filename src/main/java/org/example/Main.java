@@ -72,7 +72,7 @@ public class Main {
                             switch (cChoice) {
                                 case 1:
                                     System.out.print("Enter Course ID: ");
-                                    int cID = jungkook.nextInt();
+                                    String cID = jungkook.next();
                                     jungkook.nextLine();
                                     System.out.print("Enter Course Name: ");
                                     String cName = jungkook.next();
@@ -88,13 +88,13 @@ public class Main {
                                     break;
                                 case 3:
                                     System.out.print("Enter Course ID to update: ");
-                                    int updCouId = jungkook.nextInt();
+                                    String updCouId = jungkook.next();
 
                                     cRegis.updateCourse(new Course(updCouId));
                                     break;
                                 case 4:
                                     System.out.print("Enter Course ID to remove: ");
-                                    int remCouId = jungkook.nextInt();
+                                    String remCouId = jungkook.next();
 
                                     System.out.println(cRegis.removeCourse(new Course(remCouId)));
                                     break;

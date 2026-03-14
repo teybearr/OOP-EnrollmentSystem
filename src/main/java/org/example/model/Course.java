@@ -1,17 +1,35 @@
 package org.example.model;
 
-public class Course extends Person {
+public class Course {
+    private String courseID;
+    private String courseName;
     private String courseProgram;
 
-    public Course(){}
-
-    public Course(int id){
-        super(id);
+    public Course(){
     }
 
-    public Course (int id, String name, String courseProgram){
-        super(id, name);
+    public Course(String courseID){
+        this.courseID = courseID;
+    }
+
+    public Course (String courseID, String courseName, String courseProgram){
+        this.courseID = courseID;
+        this.courseName = courseName;
         this.courseProgram = courseProgram;
+    }
+
+    public String getCourseID (){
+        return courseID;
+    }
+    public void setCourseID (String courseID){
+        this.courseID = courseID;
+    }
+
+    public String getCourseName (){
+        return courseName;
+    }
+    public void setCourseName (String courseName){
+        this.courseName = courseName;
     }
 
     public String getCourseProgram() {
@@ -22,16 +40,17 @@ public class Course extends Person {
     }
 
     public void displayCourse() {
-        System.out.println("\nCourse ID: " + getID());
-        System.out.println("Course Name: " + getName());
+        System.out.println("\nCourse ID: " + getCourseID());
+        System.out.println("Course Name: " + getCourseName());
         System.out.println("Course Program: " + getCourseProgram());
     }
 
     @Override
     public String toString() {
-        return "Course {" +
-                "ID = '" + getID() + "' | " +
-                "Name = '" + getName() + "' | " +
-                "Program: '" + courseProgram + "'}";
+        return "Course{" +
+                "courseID='" + courseID + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", courseProgram='" + courseProgram + '\'' +
+                '}';
     }
 }

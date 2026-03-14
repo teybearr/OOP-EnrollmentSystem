@@ -18,7 +18,7 @@ public class courseRegistration {
 
     public void updateCourse (Course course){
         for (int i=0; i < coursesList.size(); i++){
-            if (coursesList.get(i).getID() == (course.getID())){
+            if (coursesList.get(i).() == (course.getID())){
                 System.out.print("Enter new course: ");
                 String newName = jungkook.nextLine();
                 System.out.print("Enter new program: ");
