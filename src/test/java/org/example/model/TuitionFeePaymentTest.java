@@ -1,5 +1,6 @@
 package org.example.model;
 
+import org.example.service.TuitionFeePayment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
