@@ -3,15 +3,15 @@ package org.example.model;
 public class Student extends Person {
     private String program;
 
+    @Override
+    public void mainTask() {
+        System.out.println("Studying...");
+    }
+
     public Student(){}
 
     public Student(int id){
         super(id);
-    }
-
-    @Override
-    public void mainTask() {
-        System.out.println("Studying...");
     }
 
     public Student(int id, String name, String program) {
