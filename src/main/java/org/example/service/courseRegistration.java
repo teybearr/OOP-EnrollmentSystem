@@ -9,7 +9,6 @@ public class courseRegistration {
 
     public void save (Course course){
         coursesList.add(course);
-        System.out.println("Successfully added!");
     }
 
     public void displayAll (){
@@ -18,14 +17,13 @@ public class courseRegistration {
 
     public void updateCourse (Course course){
         for (int i=0; i < coursesList.size(); i++){
-            if (coursesList.get(i).getID() == (course.getID())){
+            if (coursesList.get(i).getCourseID().equals(course.getCourseID())){
                 System.out.print("Enter new course: ");
                 String newName = jungkook.nextLine();
                 System.out.print("Enter new program: ");
                 String newProg = jungkook.nextLine();
 
-                coursesList.set(i, new Course (course.getID(), newName, newProg));
-                System.out.println("Successfully updated!");
+                coursesList.set(i, new Course (course.getCourseID(), newName, newProg));
                 break;
             }
         }
@@ -33,9 +31,9 @@ public class courseRegistration {
 
     public String removeCourse(Course course) {
         for (int i = 0; i < coursesList.size(); i++) {
-            if (coursesList.get(i).getID() == (course.getID())) {
+            if (coursesList.get(i).getCourseID().equals(course.getCourseID())) {
                 coursesList.remove(i);
-                return "Successfully deleted!";
+                return "Successfully Deleted";
             }
         }
         return "Error";
