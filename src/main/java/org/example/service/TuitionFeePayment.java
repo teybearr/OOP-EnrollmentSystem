@@ -10,24 +10,18 @@ public class TuitionFeePayment {
         if (discountRate!=0){
             totalTuition = totalTuition - (totalTuition * discountRate);
         }
-        //this.balance += totalTuition;
         return totalTuition;
     }
 
     public void makePayment (double amount){
-        this.balance = this.balance-amount;
-        System.out.printf("Payment of P%.2f received!", amount);
+        balance = totalTuition-amount;
     }
 
     public double getRemainingBalance(){
-        return this.balance;
+        return balance;
     }
 
     public boolean isFullyPaid(){
-        if (this.balance <= 0){
-            return true;
-        } else {
-            return false;
-        }
+        return balance == 0 ? true : false;
     }
 }

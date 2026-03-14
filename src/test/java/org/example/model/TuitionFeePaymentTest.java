@@ -2,6 +2,7 @@ package org.example.model;
 
 import org.example.service.TuitionFeePayment;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,29 +16,41 @@ class TuitionFeePaymentTest {
     }
 
     @Test
-    void shouldGetTotalWithCorrectDiscount(){
-        double actTest1 = tuiFeePayment.calculateTuitionFee(20, 20);
-
-        assertEquals(16000.00, actTest1, 0.001);
+    @DisplayName("Calculation of Tuition Fee w/o")
+    void shouldGetTotalTuitionFeeWithNoDiscount(){
+        assertEquals(3000.00, tuiFeePayment.calculateTuitionFee(3, 0));
     }
 
     @Test
-    void shouldReduceBalanceWhenPaymentIsMade() {
-        tuiFeePayment.calculateTuitionFee(20, 20);
-        double paymentAmount = 5000.00;
-        double expRemaining = 11000.00;
-        tuiFeePayment.makePayment(paymentAmount);
-
-        assertEquals(expRemaining, tuiFeePayment.getRemainingBalance(), 0.001);
+    @DisplayName("Calculation of Tuition Fee w/ Discount")
+    void shouldGetTotalTuitionFeeWithTenPercentDiscount(){
+        assertEquals(2700.00, tuiFeePayment.calculateTuitionFee(3, 0.10));
     }
 
     @Test
-    void shouldReturnTrueWhenBalanceIsFullyPaid() {
-        tuiFeePayment.calculateTuitionFee(10, 0); // Sets balance to 10000.0
-        tuiFeePayment.makePayment(10000.00);
-        boolean result = tuiFeePayment.isFullyPaid();
+    @DisplayName("Pay Tuition Fee")
+    void shouldMakePayment() {
+        tuiFeePayment.calculateTuitionFee(3,0.10);
+        tuiFeePayment.makePayment(1000);
 
-        assertEquals(true, result, "The student should be marked as fully paid.");
+        assertEquals(1700, tuiFeePayment.getRemainingBalance());
     }
 
+    @Test
+    @DisplayName("Is Not Fully Paid")
+    void shouldReturnFalseIfNotFullyPaid() {
+        tuiFeePayment.calculateTuitionFee(3, 0.10);
+        tuiFeePayment.makePayment(1000);
+
+        assertFalse(tuiFeePayment.isFullyPaid());
+    }
+
+    @Test
+    @DisplayName("Is Not Fully Paid")
+    void shouldReturnTrueIfFullyPaid() {
+        tuiFeePayment.calculateTuitionFee(3, 0.10);
+        tuiFeePayment.makePayment(2700);
+
+        assertTrue(tuiFeePayment.isFullyPaid());
+    }
 }
