@@ -9,6 +9,11 @@ public class Student extends Person {
         super(id);
     }
 
+    @Override
+    public void mainTask() {
+        System.out.println("Studying...");
+    }
+
     public Student(int id, String name, String program) {
         super(id, name);
         this.program = program;
