@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.model.Course;
 import org.example.model.Student;
+import org.example.service.TuitionFeePayment;
 import org.example.service.courseRegistration;
 import org.example.service.studentRegistration;
 
@@ -11,8 +12,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner jungkook = new Scanner(System.in);
         while (true) {
-            System.out.println("\n[1] Student Registration\n[2] Course Registration");
-            System.out.print("Do you want to register a STUDENT or a COURSE?: ");
+            System.out.println("\n[1] Student Registration\n[2] Course Registration\n[3]Tuition Fee Payment");
+            System.out.print("What do you want to do?: ");
             int choiceRegis = jungkook.nextInt();
 
             while (true) {
@@ -104,6 +105,12 @@ public class Main {
                                     System.out.println("Please enter a number from 1 to 5 only");
                                     break;
                             }
+                        }
+                        break;
+                    case 3:
+                        TuitionFeePayment tfPayment = new TuitionFeePayment();
+                        boolean tfRun = true;
+                        while (tfRun){
                         }
                         break;
                     default:
