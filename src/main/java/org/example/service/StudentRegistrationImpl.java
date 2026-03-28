@@ -3,8 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import org.example.model.Student;
 
-public class studentRegistration {
-
+public class StudentRegistrationImpl implements StudentRegistration {
     private ArrayList<Student> studentsList = new ArrayList<>();
     private Scanner jungkook = new Scanner (System.in);
 

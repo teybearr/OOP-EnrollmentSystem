@@ -1,10 +1,12 @@
 package org.example;
 
 import org.example.model.Course;
+import org.example.model.Registrar;
 import org.example.model.Student;
-import org.example.service.TuitionFeePayment;
-import org.example.service.courseRegistration;
-import org.example.service.studentRegistration;
+import org.example.service.CourseRegistration;
+import org.example.service.CourseRegistrationImpl;
+import org.example.service.StudentRegistration;
+import org.example.service.StudentRegistrationImpl;
 
 import java.util.Scanner;
 
@@ -12,14 +14,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner jungkook = new Scanner(System.in);
         while (true) {
-            System.out.println("\n[1] Student Registration\n[2] Course Registration\n[3]Tuition Fee Payment");
+            StudentRegistrationImpl studentRegistration = new StudentRegistrationImpl();
+            CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
+
+            Registrar registrar = new Registrar(studentRegistration, courseRegistration);
+
+            System.out.println("\nWelcome to KATS SCHOOL REGISTRATION");
+            System.out.println("[1] Student Registration\n[2] Course Registration\n[3] Tuition Fee Payment");
             System.out.print("What do you want to do?: ");
             int choiceRegis = jungkook.nextInt();
 
             while (true) {
                 switch (choiceRegis) {
                     case 1:
-                        studentRegistration sRegis = new studentRegistration();
                         boolean sRun = true;
                         while (sRun) {
                             System.out.println("\n-- STUDENT REGISTRATION --");
@@ -35,22 +42,22 @@ public class Main {
                                     System.out.print("Enter Program: ");
                                     String sProg = jungkook.next();
 
-                                    sRegis.saveStudent(new Student(sId, sName, sProg));
+                                    registrar.saveStudent(new Student(sId, sName, sProg));
                                     break;
                                 case 2:
-                                    sRegis.displayAllStudent();
+                                    registrar.displayAllStudent();
                                     break;
                                 case 3:
                                     System.out.print("Enter Student ID to update: ");
                                     int updStuId = jungkook.nextInt();
 
-                                    sRegis.updateStudent(new Student(updStuId));
+                                    registrar.updateStudent(new Student(updStuId));
                                     break;
                                 case 4:
                                     System.out.print("Enter Student ID to remove: ");
                                     int remStuId = jungkook.nextInt();
 
-                                    System.out.println(sRegis.removeStudent(new Student(remStuId)));
+                                    System.out.println(registrar.removeStudent(new Student(remStuId)));
                                     break;
                                 case 5:
                                     sRun = false;
@@ -62,7 +69,6 @@ public class Main {
                         }
                         break;
                     case 2:
-                        courseRegistration cRegis = new courseRegistration();
                         boolean cRun = true;
                         while (cRun) {
                             System.out.println("\n-- COURSE REGISTRATION --");
@@ -81,22 +87,22 @@ public class Main {
                                     String cProg = jungkook.next();
                                     jungkook.nextLine();
 
-                                    cRegis.save(new Course(cID, cName, cProg));
+                                    registrar.save(new Course(cID, cName, cProg));
                                     break;
                                 case 2:
-                                    cRegis.displayAll();
+                                    registrar.displayAll();
                                     break;
                                 case 3:
                                     System.out.print("Enter Course ID to update: ");
                                     String updCouId = jungkook.next();
 
-                                    cRegis.updateCourse(new Course(updCouId));
+                                    registrar.updateCourse(new Course(updCouId));
                                     break;
                                 case 4:
                                     System.out.print("Enter Course ID to remove: ");
                                     String remCouId = jungkook.next();
 
-                                    System.out.println(cRegis.removeCourse(new Course(remCouId)));
+                                    System.out.println(registrar.removeCourse(new Course(remCouId)));
                                     break;
                                 case 5:
                                     cRun = false;
@@ -160,9 +166,10 @@ public class Main {
                 }
                 break;
             }
-            System.out.print("Do you want to continue ([0] NO, [1] YES): ");
+            System.out.print("Do you want to continue with Registration or Exit? ([0] Exit, [1] Continue): ");
             int doneNaBa = jungkook.nextInt();
             if (doneNaBa == 0) {
+                System.out.println("Thank you for using KATS SCHOOL REGISTRATION! Exiting now...");
                 break;
             }
         }

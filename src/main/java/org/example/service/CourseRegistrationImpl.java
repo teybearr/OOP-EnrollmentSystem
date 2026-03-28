@@ -3,12 +3,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import org.example.model.Course;
 
-public class courseRegistration {
+public class CourseRegistrationImpl implements CourseRegistration {
     private Scanner jungkook = new Scanner(System.in);
     private ArrayList<Course> coursesList = new ArrayList<>();
 
     public void save (Course course){
         coursesList.add(course);
+        System.out.println("Successfully added!");
     }
 
     public void displayAll (){

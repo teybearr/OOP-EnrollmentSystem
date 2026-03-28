@@ -1,5 +1,7 @@
 package org.example.model;
 
+import java.util.ArrayList;
+
 public class Instructor extends Person{
 
     @Override
@@ -8,4 +10,6 @@ public class Instructor extends Person{
     }
 
     Course course = new Course();
+    ArrayList<String> courses = new ArrayList<>();
+
 }
