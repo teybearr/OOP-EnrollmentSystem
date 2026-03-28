@@ -12,6 +12,10 @@ public class Registrar {
         this.CRegistration = CRegistration;
     }
 
+    public Registrar() {
+
+    }
+
     public String saveStudent(Student student){
         SRegistration.saveStudent(student);
         return "Successfully added student!";
