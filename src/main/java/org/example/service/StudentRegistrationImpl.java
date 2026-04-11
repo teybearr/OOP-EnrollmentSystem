@@ -40,4 +40,7 @@ public class StudentRegistrationImpl implements StudentRegistration {
         }
         return "Error";
     }
+
+    public void TuitionFeePayment(){
+    }
 }

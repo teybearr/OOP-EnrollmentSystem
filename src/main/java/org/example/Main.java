@@ -3,10 +3,7 @@ package org.example;
 import org.example.model.Course;
 import org.example.model.Registrar;
 import org.example.model.Student;
-import org.example.service.CourseRegistration;
-import org.example.service.CourseRegistrationImpl;
-import org.example.service.StudentRegistration;
-import org.example.service.StudentRegistrationImpl;
+import org.example.service.*;
 
 import java.util.Scanner;
 
@@ -16,11 +13,12 @@ public class Main {
         while (true) {
             StudentRegistrationImpl studentRegistration = new StudentRegistrationImpl();
             CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
+            DepartmentRegistrationImpl departmentRegistration = new DepartmentRegistrationImpl();
 
-            Registrar registrar = new Registrar(studentRegistration, courseRegistration);
+            Registrar registrar = new Registrar(studentRegistration, courseRegistration, departmentRegistration);
 
             System.out.println("\nWelcome to KATS SCHOOL REGISTRATION");
-            System.out.println("[1] Student Registration\n[2] Course Registration\n[3] Tuition Fee Payment");
+            System.out.println("[1] Student Registration\n[2] Course Registration\n[3] Department Registration\n[4] Tuition Fee Payment");
             System.out.print("What do you want to do?: ");
             int choiceRegis = jungkook.nextInt();
 
@@ -113,7 +111,35 @@ public class Main {
                             }
                         }
                         break;
-//                    case 3:
+                    case 3:
+                        boolean dRun = true;
+                        while (dRun) {
+                            System.out.println("\n-- DEPARTMENT REGISTRATION --");
+                            System.out.println("[1] Save Student\n[2] Display Student\n[3] Update Student\n[4] Delete Person\n[5] Exit");
+                            System.out.print("What do you want to do?: ");
+                            int dChoice = jungkook.nextInt();
+                            switch (dChoice) {
+                                case 1:
+//                                    System.out.print("Enter Department ID: ");
+//                                    int dId = jungkook.nextInt();
+//                                    System.out.print("Enter Department Name: ");
+//                                    int dName = jungkook.nextInt();
+//
+//                                    registrar.saveDepartment(new Student(dId, dName));
+                                    break;
+                                case 2:
+                                    registrar.displayAllDep();
+                                    break;
+                                case 5:
+                                    dRun = false;
+                                    break;
+                                default:
+                                    System.out.println("Please enter a number from 1 to 5 only");
+                                    break;
+                            }
+                        }
+                        break;
+//                    case 4:
 //                        TuitionFeePayment tfPayment = new TuitionFeePayment();
 //                        boolean tfRun = true;
 //                        while (tfRun) {

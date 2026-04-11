@@ -4,12 +4,54 @@ import java.util.ArrayList;
 
 public class Instructor extends Person{
 
+//    public Instructor(int id, String name) {
+//    }
+//
+//    @Override
+//    public void mainTask() {
+//        System.out.println("Teaching...");
+//    }
+//
+//    Course course = new Course();
+//    ArrayList<String> courses = new ArrayList<>();
+
+    private String course;
+
+    public Instructor(){
+        super();
+    }
+
+    public Instructor(int instructorID){
+        super(instructorID);
+    }
+
+    public Instructor(int instructorID, String instructorName){
+        super(instructorID, instructorName);
+    }
+    public Instructor(int instructorID, String instructorName, String course){
+        super(instructorID, instructorName);
+        this.course = course;
+    }
+
+    public String getCourse(){
+        return course;
+    }
+    public void setCourse(String course){
+        this.course = course;
+    }
+
     @Override
     public void mainTask() {
         System.out.println("Teaching...");
     }
 
-    Course course = new Course();
-    ArrayList<String> courses = new ArrayList<>();
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "instructorID=" + super.getID() +
+                "instructorName=" + super.getName() +
+                "course='" + course + '\'' +
+                '}';
+    }
 
 }
