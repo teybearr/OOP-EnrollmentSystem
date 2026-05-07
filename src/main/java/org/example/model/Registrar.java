@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.service.CourseRegistration;
 import org.example.service.DepartmentRegistration;
 import org.example.service.StudentRegistration;
+import org.example.model.DupliStudIDExc;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Registrar {
     }
 
     // ---- STUDENT ----------------------------------------------------------------------------------------
-    public String saveStudent(Student student){
+    public String saveStudent(Student student) throws DupliStudIDExc {
         SRegistration.saveStudent(student);
         return "Successfully added student!";
     }
@@ -29,8 +30,7 @@ public class Registrar {
         SRegistration.updateStudent(student);
     }
     public String removeStudent(Student student){
-        SRegistration.removeStudent(student);
-        return "Successfully removed student!";
+        return SRegistration.removeStudent(student);
     }
 
     // ---- COURSE ----------------------------------------------------------------------------------------
@@ -45,8 +45,7 @@ public class Registrar {
         CRegistration.updateCourse(course);
     }
     public String removeCourse(Course course){
-        CRegistration.removeCourse(course);
-        return "Successfully removed course!";
+        return CRegistration.removeCourse(course);
     }
 
     // ---- DEPARTMENT ----------------------------------------------------------------------------------------

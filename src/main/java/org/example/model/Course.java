@@ -50,6 +50,6 @@ public class Course {
         return "Course {" +
                 "ID = '" + courseID + "' | " +
                 "Name = '" + courseName + "' | " +
-                "Program: '" + courseProgram + "'}";
+                "Program = '" + courseProgram + "'}";
     }
 }

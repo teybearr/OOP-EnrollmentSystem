@@ -3,18 +3,6 @@ package org.example.model;
 import java.util.ArrayList;
 
 public class Instructor extends Person{
-
-//    public Instructor(int id, String name) {
-//    }
-//
-//    @Override
-//    public void mainTask() {
-//        System.out.println("Teaching...");
-//    }
-//
-//    Course course = new Course();
-//    ArrayList<String> courses = new ArrayList<>();
-
     private String course;
 
     public Instructor(){
@@ -47,11 +35,10 @@ public class Instructor extends Person{
 
     @Override
     public String toString() {
-        return "Instructor{" +
-                "instructorID=" + super.getID() +
-                "instructorName=" + super.getName() +
-                "course='" + course + '\'' +
-                '}';
+        return "Instructor {" +
+                "ID = '" + getID() + "' | " +
+                "Name = '" + getName() + "' | " +
+                "Course: '" + course + "'}";
     }
 
 }

@@ -33,4 +33,11 @@ public class Department {
     public void setInstructorList(List<Instructor> instructorList) {
         this.instructorList = instructorList;
     }
+
+    @Override
+    public String toString() {
+        return "Course {" +
+                "ID = '" + id + "' | " +
+                "Department Name = '" + name + "'}";
+    }
 }

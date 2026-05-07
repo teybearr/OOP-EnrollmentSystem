@@ -3,6 +3,7 @@ package org.example;
 import org.example.model.Course;
 import org.example.model.Registrar;
 import org.example.model.Student;
+import org.example.model.DupliStudIDExc;
 import org.example.service.*;
 
 import java.util.Scanner;
@@ -40,7 +41,11 @@ public class Main {
                                     System.out.print("Enter Program: ");
                                     String sProg = jungkook.next();
 
-                                    registrar.saveStudent(new Student(sId, sName, sProg));
+                                    try {
+                                        registrar.saveStudent(new Student(sId, sName, sProg));
+                                    } catch (DupliStudIDExc e) {
+                                        System.out.println("Error: " + e.getMessage());
+                                    }
                                     break;
                                 case 2: // student registration: read
                                     registrar.displayAllStudent();
@@ -139,6 +144,7 @@ public class Main {
                                     registrar.updateDepartment(updDepId);
                                     break;
                                 case 4: // department registration: delete
+                                    jungkook.nextLine();
                                     System.out.print("Enter Department ID to remove: ");
                                     String remDepId = jungkook.nextLine();
 

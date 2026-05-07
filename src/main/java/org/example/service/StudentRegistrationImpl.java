@@ -2,12 +2,20 @@ package org.example.service;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.example.model.Student;
+import org.example.model.Section;
+import org.example.model.FullSectionExc;
+import org.example.model.DupliStudIDExc;
 
 public class StudentRegistrationImpl implements StudentRegistration {
     private ArrayList<Student> studentsList = new ArrayList<>();
     private Scanner jungkook = new Scanner (System.in);
 
-    public void saveStudent (Student student){
+    public void saveStudent (Student student) throws DupliStudIDExc {
+        for (Student s : studentsList){
+            if (s.getID() == student.getID()) {
+                throw new DupliStudIDExc(student.getID() + "already exists.");
+            }
+        }
         studentsList.add(student);
         System.out.println("Successfully added!");
     }
@@ -39,5 +47,13 @@ public class StudentRegistrationImpl implements StudentRegistration {
             }
         }
         return "Error";
+    }
+
+    public void enrollStudentToSection(Student student, Section section) throws FullSectionExc {
+        if (section.getEnrolledStuds().size() >= section.getMaxCapacity()) {
+            throw new FullSectionExc("Can't enroll: " + section.getSectionName() + "is full now...");
+        }
+        section.getEnrolledStuds().add(student);
+        System.out.println("Successfully enrolled!");
     }
 }
