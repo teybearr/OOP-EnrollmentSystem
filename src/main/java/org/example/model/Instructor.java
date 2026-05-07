@@ -40,5 +40,4 @@ public class Instructor extends Person{
                 "Name = '" + getName() + "' | " +
                 "Course: '" + course + "'}";
     }
-
 }

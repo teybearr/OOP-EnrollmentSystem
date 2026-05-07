@@ -11,7 +11,8 @@ public class StudentRegistrationImpl implements StudentRegistration {
     private Scanner jungkook = new Scanner (System.in);
 
     public void saveStudent (Student student) throws DupliStudIDExc {
-        for (Student s : studentsList){
+        for (int i = 0; i < studentsList.size(); i++) {
+            Student s = studentsList.get(i);
             if (s.getID() == student.getID()) {
                 throw new DupliStudIDExc(student.getID() + "already exists.");
             }

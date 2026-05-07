@@ -6,11 +6,19 @@ public class Section {
     private String sectionName;
     private int maxCapacity;
     private ArrayList<Student> enrolledStuds;
+    private Instructor instructor;
 
     public Section (String sectionName, int maxCapacity) {
         this.sectionName = sectionName;
         this.maxCapacity = maxCapacity;
         this.enrolledStuds = new ArrayList<>();
+    }
+
+    public Section (String sectionName, int maxCapacity, Instructor instructor) {
+        this.sectionName = sectionName;
+        this.maxCapacity = maxCapacity;
+        this.enrolledStuds = new ArrayList<>();
+        this.instructor = instructor;
     }
 
     public String getSectionName() {
@@ -34,11 +42,19 @@ public class Section {
         this.enrolledStuds = enrolledStuds;
     }
 
+    public Instructor getInstructor() {
+        return instructor;
+    }
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     @Override
     public String toString() {
         return "Section {" +
                 "Section = '" + sectionName + "' | " +
                 "Capacity = '" + maxCapacity + "' | " +
-                "Enrolled = '" + enrolledStuds.size() + "'}";
+                "Enrolled = '" + enrolledStuds.size() + "' | " +
+                "Instructor = '" + instructor +  "'}";
     }
 }

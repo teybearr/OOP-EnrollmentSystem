@@ -2,6 +2,8 @@ package org.example.service;
 
 import org.example.model.Department;
 import org.example.model.Instructor;
+import org.example.model.Section;
+import org.example.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +50,57 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
 
     public List<Department> displayAllDep (){
         return departments.stream().toList();
+    }
+
+    public void addSectiontoDept(String departmentId, Section section) {
+        for (int i = 0; i < departments.size(); i++) {
+            Department d = departments.get(i);
+            if (d.getId().equals(departmentId)) {
+                d.getSectionList().add(section);
+                System.out.println("Section added to department!");
+                return;
+            }
+        }
+        System.out.println("Department not found");
+    }
+
+    public void addDepartment(Department department) {
+        departments.add(department);
+    }
+
+    public void displayHierarchy() {
+        if (departments.isEmpty()) {
+            System.out.println("Department not found");
+            return;
+        }
+        for (int i = 0; i < departments.size(); i++) {
+            Department d = departments.get(i);
+            System.out.println("\n DEPARTMENT: " + d.getName() + " (ID: " + d.getId() + ")");
+
+            if (d.getSectionList().isEmpty()) {
+                System.out.println("Sections not found");
+            } else {
+                for (int h = 0; h < d.getSectionList().size(); h++) {
+                    Section s = d.getSectionList().get(h);
+                    System.out.println(" > SECTION: " + s.getSectionName() + " | Capacity: " + s.getMaxCapacity());
+
+                    if (s.getInstructor() != null) {
+                        System.out.println(" >> INSTRUCTOR: " + s.getInstructor().getName() + " (ID: " + s.getInstructor().getID() + ")");
+                    } else {
+                        System.out.println(" >> INSTRUCTOR: No instructor assigned");
+                    }
+
+                    if (s.getEnrolledStuds().isEmpty()) {
+                        System.out.println(" >> STUDENTS: No Students enrolled");
+                    } else {
+                        System.out.println(" >> STUDENTS: ");
+                        for (int j = 0; j < s.getEnrolledStuds().size(); j++) {
+                            Student stud = s.getEnrolledStuds().get(i);
+                            System.out.println("    - " + stud.getName() + " (ID: " + stud.getID() + ")");
+                        }
+                    }
+                }
+            }
+        }
     }
 }

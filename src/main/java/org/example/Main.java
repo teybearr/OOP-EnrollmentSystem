@@ -1,11 +1,9 @@
 package org.example;
 
-import org.example.model.Course;
-import org.example.model.Registrar;
-import org.example.model.Student;
-import org.example.model.DupliStudIDExc;
+import org.example.model.*;
 import org.example.service.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -14,12 +12,31 @@ public class Main {
 
         StudentRegistrationImpl studentRegistration = new StudentRegistrationImpl();
         CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
+        InstructorRegistrationImpl instructorRegistration = new InstructorRegistrationImpl();
         DepartmentRegistrationImpl departmentRegistration = new DepartmentRegistrationImpl();
-        Registrar registrar = new Registrar(studentRegistration, courseRegistration, departmentRegistration);
+        Registrar registrar = new Registrar(studentRegistration, courseRegistration, instructorRegistration, departmentRegistration);
+
+        Department CSDep = new Department("CS", "Computer Science", new ArrayList<>());
+        Section C2ASec = new Section("C2A", 35, null);
+        Section C2BSec = new Section("C2B", 30, null);
+        CSDep.getSectionList().add(C2ASec);
+        CSDep.getSectionList().add(C2BSec);
+
+        Department ITDep = new Department("IT", "Information Technology", new ArrayList<>());
+        Section IT2ASec = new Section("IT2A", 35, null);
+        Section IT2BSec = new Section("IT2B", 35, null);
+        Section IT2CSec = new Section("IT2C", 35, null);
+        ITDep.getSectionList().add(IT2ASec);
+        ITDep.getSectionList().add(IT2BSec);
+        ITDep.getSectionList().add(IT2CSec);
+
+        Department ACTDep = new Department("ACT", "Associate in Computer Technology", new ArrayList<>());
+        Section ACT2ASec = new Section("ACT2A", 25, null);
+        ACTDep.getSectionList().add(ACT2ASec);
 
         while (true) {
-            System.out.println("\nWelcome to KATS SCHOOL REGISTRATION");
-            System.out.println("[1] Student Registration\n[2] Course Registration\n[3] Department Registration\n[4] Tuition Fee Payment");
+            System.out.println("\nWelcome to KATS SCHOOL REGISTRATION SYSTEM");
+            System.out.println("[1] Student Registration\n[2] Course Registration\n[3] Instructor Registration\n[4] View Departments\n[5] Tuition Fee Payment");
             System.out.print("What do you want to do?: ");
             int choiceRegis = jungkook.nextInt();
 
@@ -116,50 +133,87 @@ public class Main {
                             }
                         }
                         break;
-                    case 3: // department registration
-                        boolean dRun = true;
-                        while (dRun) {
-                            System.out.println("\n-- DEPARTMENT REGISTRATION --");
-                            System.out.println("[1] Save Department\n[2] Display Department\n[3] Update Department\n[4] Delete Department\n[5] Exit");
+                    case 3: // instructor registration
+                        boolean iRun = true;
+                        while (iRun) {
+                            System.out.println("\n-- INSTRUCTOR REGISTRATION --");
+                            System.out.println("[1] Save Instructor\n[2] Display Instructor\n[3] Update Instructor\n[4] Delete Instructor\n[5] Exit");
                             System.out.print("What do you want to do?: ");
-                            int dChoice = jungkook.nextInt();
-                            switch (dChoice) {
-                                case 1: // department registration: create
+                            int iChoice = jungkook.nextInt();
+                            switch (iChoice) {
+                                case 1: // instructor registration: create
+                                    System.out.print("Enter Instructor ID: ");
+                                    int iId = jungkook.nextInt();
                                     jungkook.nextLine();
-                                    System.out.print("Enter Department ID: ");
-                                    String dId = jungkook.nextLine();
-                                    System.out.print("Enter Department Name: ");
-                                    String dName = jungkook.nextLine();
-
-                                    registrar.saveDepartment(dId, dName, new java.util.ArrayList<>());
-                                    break;
-                                case 2: // department registration: read
-                                    registrar.displayAllDep();
-                                    break;
-                                case 3: // department registration: update
-                                    jungkook.nextLine(); // clear buffer
-                                    System.out.print("Enter Department ID to update: ");
-                                    String updDepId = jungkook.nextLine();
-
-                                    registrar.updateDepartment(updDepId);
-                                    break;
-                                case 4: // department registration: delete
+                                    System.out.print("Enter Instructor Name: ");
+                                    String iName = jungkook.next();
                                     jungkook.nextLine();
-                                    System.out.print("Enter Department ID to remove: ");
-                                    String remDepId = jungkook.nextLine();
+                                    System.out.print("Enter handling course: ");
+                                    String iCourse = jungkook.next();
+                                    jungkook.nextLine();
 
-                                    System.out.println(registrar.removeDepartment(remDepId));
+                                    registrar.saveInstructor(new Instructor(iId, iName, iCourse));
                                     break;
-                                case 5: // department registration: exit
-                                    dRun = false;
+                                case 2: // instructor registration: read
+                                    registrar.displayAllInstructor();
                                     break;
-                                default: // department registration: mali mo
+                                case 3: // instructor registration: update
+                                    System.out.print("Enter Instructor ID to update: ");
+                                    int updInsId = jungkook.nextInt();
+
+                                    registrar.updateInstructor(new Instructor(updInsId));
+                                    break;
+                                case 4: // instructor registration: delete
+                                    System.out.print("Enter Instructor ID to remove: ");
+                                    int remInsId = jungkook.nextInt();
+
+                                    System.out.println(registrar.removeInstructor(new Instructor(remInsId)));
+                                    break;
+                                case 5: // instructor registration: exit
+                                    iRun = false;
+                                    break;
+                                default: // instructor registration: mali mo
                                     System.out.println("Please enter a number from 1 to 5 only");
                                     break;
                             }
                         }
                         break;
-                    case 4: // tuition fee calculator
+                    case 4: // viewing departments
+                        boolean dRun = true;
+                        while (dRun) {
+                            System.out.println("\n-- DEPARTMENT VIEWING --");
+                            System.out.println("[1] Add Section to a Department\n[2] View Department Hierarchy\n[3] Exit");
+                            System.out.print("What do you want to do?: ");
+                            int dChoice = jungkook.nextInt();
+                            switch (dChoice) {
+                                case 1: // department viewing: add section to dept
+                                    jungkook.nextLine();
+                                    System.out.print("Enter Department ID to add section to: ");
+                                    String secDepId = jungkook.nextLine();
+                                    System.out.print("Enter Section Name: ");
+                                    String secName = jungkook.nextLine();
+                                    System.out.print("Enter Max Capacity: ");
+                                    int secCap = jungkook.nextInt();
+                                    System.out.print("Enter Instructor ID for this section (0 if none): ");
+                                    int secInsId = jungkook.nextInt();
+
+                                    Instructor secInstructor = null;
+                                    if (secInsId != 0) { secInstructor = new Instructor(secInsId); }
+                                    registrar.addSectiontoDept(secDepId, new Section(secName, secCap, secInstructor));
+                                    break;
+                                case 2: // department viewing: view
+                                    registrar.displayHierarchy();
+                                    break;
+                                case 3: // department registration: exit
+                                    dRun = false;
+                                    break;
+                                default: // department viewing: mali mo
+                                    System.out.println("Please enter a number from 1 to 3 only");
+                                    break;
+                            }
+                        }
+                        break;
+                    case 5: // tuition fee calculator
                         TuitionFeePayment tfPayment = new TuitionFeePayment();
                         boolean tfRun = true;
                         while (tfRun) {
@@ -198,7 +252,7 @@ public class Main {
                         }
                         break;
                     default: // mali mo
-                        System.out.println("Please choose between 1 to 4 ONLY.");
+                        System.out.println("Please choose between 1 to 5 ONLY.");
                         break;
                 }
                 break;
