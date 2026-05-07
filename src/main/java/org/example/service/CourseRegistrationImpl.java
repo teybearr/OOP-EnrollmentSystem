@@ -25,6 +25,7 @@ public class CourseRegistrationImpl implements CourseRegistration {
                 String newProg = jungkook.nextLine();
 
                 coursesList.set(i, new Course (course.getCourseID(), newName, newProg));
+                System.out.println("Successfully updated!");
                 break;
             }
         }

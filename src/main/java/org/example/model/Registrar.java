@@ -4,7 +4,6 @@ import org.example.service.CourseRegistration;
 import org.example.service.DepartmentRegistration;
 import org.example.service.StudentRegistration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Registrar {
@@ -18,8 +17,7 @@ public class Registrar {
         this.DRegistration = DRegistration;
     }
 
-    //public Registrar() {}
-
+    // ---- STUDENT ----------------------------------------------------------------------------------------
     public String saveStudent(Student student){
         SRegistration.saveStudent(student);
         return "Successfully added student!";
@@ -35,6 +33,7 @@ public class Registrar {
         return "Successfully removed student!";
     }
 
+    // ---- COURSE ----------------------------------------------------------------------------------------
     public String save(Course course){
         CRegistration.save(course);
         return "Successfully added course!";
@@ -47,13 +46,10 @@ public class Registrar {
     }
     public String removeCourse(Course course){
         CRegistration.removeCourse(course);
-        return "Successfully removed student!";
+        return "Successfully removed course!";
     }
 
-    List<Instructor> instructorList = new ArrayList<>();
-    Instructor instructor1 = new Instructor(777, "hi");
-    //instructorList.add(instructor1);
-
+    // ---- DEPARTMENT ----------------------------------------------------------------------------------------
     public String saveDepartment(String id, String name, List<Instructor> instructorList){
         DRegistration.saveDepartment(id,name, instructorList);
         return "Successfully added Department!";
@@ -61,4 +57,14 @@ public class Registrar {
     public void displayAllDep(){
         System.out.println(DRegistration.displayAllDep());
     }
+    public void updateDepartment(String id) {
+        DRegistration.updateDepartment(id);
+    }
+    public String removeDepartment(String id) {
+        return DRegistration.removeDepartment(id);
+    }
+
+//    List<Instructor> instructorList = new ArrayList<>();
+//    Instructor instructor1 = new Instructor(777, "hi");
+//    instructorList.add(instructor1);
 }

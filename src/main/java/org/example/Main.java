@@ -132,10 +132,17 @@ public class Main {
                                     registrar.displayAllDep();
                                     break;
                                 case 3: // department registration: update
+                                    jungkook.nextLine(); // clear buffer
+                                    System.out.print("Enter Department ID to update: ");
+                                    String updDepId = jungkook.nextLine();
 
+                                    registrar.updateDepartment(updDepId);
                                     break;
                                 case 4: // department registration: delete
+                                    System.out.print("Enter Department ID to remove: ");
+                                    String remDepId = jungkook.nextLine();
 
+                                    System.out.println(registrar.removeDepartment(remDepId));
                                     break;
                                 case 5: // department registration: exit
                                     dRun = false;

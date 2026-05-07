@@ -8,6 +8,6 @@ import java.util.List;
 public interface DepartmentRegistration {
     void saveDepartment (String id, String departmentName, List<Instructor> instructorList);
     List<Department> displayAllDep ();
-    //void updateCourse(Course course);
-    //String removeCourse(Course course);
+    void updateDepartment(String id);
+    String removeDepartment(String id);
 }
