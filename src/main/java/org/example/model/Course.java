@@ -5,19 +5,16 @@ public class Course {
     private String courseName;
     private String courseProgram;
 
-    public Course(){
-    }
-
-    public Course(String courseID){
-        this.courseID = courseID;
-    }
-
+    // constructors
+    public Course(){ }
+    public Course(String courseID){ this.courseID = courseID; }
     public Course (String courseID, String courseName, String courseProgram){
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseProgram = courseProgram;
     }
 
+    // course id getters & setters
     public String getCourseID (){
         return courseID;
     }
@@ -25,6 +22,7 @@ public class Course {
         this.courseID = courseID;
     }
 
+    // course name getters & setters
     public String getCourseName (){
         return courseName;
     }
@@ -32,6 +30,7 @@ public class Course {
         this.courseName = courseName;
     }
 
+    // course program getters & setters
     public String getCourseProgram() {
         return courseProgram;
     }
@@ -39,11 +38,11 @@ public class Course {
         this.courseProgram = courseProgram;
     }
 
-    public void displayCourse() {
-        System.out.println("\nCourse ID: " + getCourseID());
-        System.out.println("Course Name: " + getCourseName());
-        System.out.println("Course Program: " + getCourseProgram());
-    }
+//    public void displayCourse() {
+//        System.out.println("\nCourse ID: " + getCourseID());
+//        System.out.println("Course Name: " + getCourseName());
+//        System.out.println("Course Program: " + getCourseProgram());
+//    }
 
     @Override
     public String toString() {

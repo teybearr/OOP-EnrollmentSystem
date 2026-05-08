@@ -11,6 +11,7 @@ public interface DepartmentRegistration {
     List<Department> displayAllDep ();
     void updateDepartment(String id);
     String removeDepartment(String id);
+
     void addSectiontoDept(String departmentId, Section section);
     void displayHierarchy();
 }

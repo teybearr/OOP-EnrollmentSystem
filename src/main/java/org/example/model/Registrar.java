@@ -13,6 +13,7 @@ public class Registrar {
     private InstructorRegistration IRegistration;
     private DepartmentRegistration DRegistration;
 
+    // constructor
     public Registrar(StudentRegistration SRegistration, CourseRegistration CRegistration, InstructorRegistration IRegistration, DepartmentRegistration DRegistration){
         this.SRegistration = SRegistration;
         this.CRegistration = CRegistration;
@@ -20,7 +21,7 @@ public class Registrar {
         this.DRegistration = DRegistration;
     }
 
-    // ---- STUDENT ----------------------------------------------------------------------------------------
+    // student
     public String saveStudent(Student student) throws DupliStudIDExc {
         SRegistration.saveStudent(student);
         return "Successfully added student!";
@@ -35,7 +36,7 @@ public class Registrar {
         return SRegistration.removeStudent(student);
     }
 
-    // ---- COURSE ----------------------------------------------------------------------------------------
+    // course
     public String save(Course course){
         CRegistration.save(course);
         return "Successfully added course!";
@@ -50,7 +51,7 @@ public class Registrar {
         return CRegistration.removeCourse(course);
     }
 
-    // ---- INSTRUCTOR ----------------------------------------------------------------------------------------
+    // instructor
     public void saveInstructor(Instructor instructor) {
         IRegistration.saveInstructor(instructor);
     }
@@ -64,7 +65,7 @@ public class Registrar {
         return IRegistration.removeInstructor(instructor);
     }
 
-//  ---- DEPARTMENT ----------------------------------------------------------------------------------------
+//  department
     public String saveDepartment(String id, String name, List<Instructor> instructorList){
         DRegistration.saveDepartment(id,name, instructorList);
         return "Successfully added Department!";
@@ -78,11 +79,9 @@ public class Registrar {
     public String removeDepartment(String id) {
         return DRegistration.removeDepartment(id);
     }
-
     public void addSectiontoDept(String departmentId, Section section) {
         DRegistration.addSectiontoDept(departmentId, section);
     }
-
     public void displayHierarchy() {
         DRegistration.displayHierarchy();
     }

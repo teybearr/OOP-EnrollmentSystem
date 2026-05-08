@@ -3,22 +3,17 @@ package org.example.model;
 public class Student extends Person {
     private String program;
 
-    @Override
-    public void mainTask() {
-        System.out.println("Studying...");
-    }
-
+    // constructors
     public Student(){}
-
     public Student(int id){
         super(id);
     }
-
     public Student(int id, String name, String program) {
         super(id, name);
         this.program = program;
     }
 
+    // section program getters & setters
     public String getProgram () {
         return program;
     }
@@ -26,10 +21,9 @@ public class Student extends Person {
         this.program = program;
     }
 
-    public void displayStudent(){
-        System.out.println("\nStudent ID: " + getID());
-        System.out.println("Student Name: " + getName());
-        System.out.println("Program: " + getProgram());
+    @Override
+    public void mainTask() {
+        System.out.println("Studying...");
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Department {
     private List<Instructor> instructorList;
     private List<Section> sectionList;
 
+    // constructor
     public Department (String id, String name, List<Instructor> instructorList){
         this.id = id;
         this.name = name;
@@ -16,6 +17,7 @@ public class Department {
         this.sectionList = new ArrayList<>();
     }
 
+    // department id getters & setters
     public String getId() {
         return id;
     }
@@ -23,6 +25,7 @@ public class Department {
         this.id = id;
     }
 
+    // department name getters & setters
     public String getName() {
         return name;
     }
@@ -30,13 +33,14 @@ public class Department {
         this.name = name;
     }
 
-    public List<Instructor> getInstructorList() {
-        return instructorList;
-    }
-    public void setInstructorList(List<Instructor> instructorList) {
-        this.instructorList = instructorList;
-    }
+//    public List<Instructor> getInstructorList() {
+//        return instructorList;
+//    }
+//    public void setInstructorList(List<Instructor> instructorList) {
+//        this.instructorList = instructorList;
+//    }
 
+    // department section list getters & setters
     public List<Section> getSectionList() {
         return sectionList;
     }
