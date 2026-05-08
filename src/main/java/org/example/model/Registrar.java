@@ -52,17 +52,17 @@ public class Registrar {
     }
 
     // instructor
-    public void saveInstructor(Instructor instructor) {
-        IRegistration.saveInstructor(instructor);
+    public void addInstructor(Instructor instructor) {
+        IRegistration.addInstructor(instructor);
     }
-    public void displayAllInstructor() {
-        IRegistration.displayAllInstructor();
+    public void assignInstructorToSection(Instructor instructor, Section section) {
+        IRegistration.assignInstructorToSection(instructor, section);
     }
-    public void updateInstructor(Instructor instructor) {
-        IRegistration.updateInstructor(instructor);
+    public void getInstructorDetails(int id) {
+        IRegistration.getInstructorDetails(id);
     }
-    public String removeInstructor(Instructor instructor) {
-        return IRegistration.removeInstructor(instructor);
+    public Section findSection(String sectionName) {
+        return DRegistration.findSection(sectionName);
     }
 
 //  department

@@ -14,26 +14,10 @@ public class Main {
         CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
         InstructorRegistrationImpl instructorRegistration = new InstructorRegistrationImpl();
         DepartmentRegistrationImpl departmentRegistration = new DepartmentRegistrationImpl();
+        DataInitz.init(departmentRegistration);
+
         Registrar registrar = new Registrar(studentRegistration, courseRegistration, instructorRegistration, departmentRegistration);
         TuitionFeePayment tfPayment = new TuitionFeePayment();
-
-        Department CSDep = new Department("CS", "Computer Science", new ArrayList<>());
-        Section C2ASec = new Section("C2A", 35, null);
-        Section C2BSec = new Section("C2B", 30, null);
-        CSDep.getSectionList().add(C2ASec);
-        CSDep.getSectionList().add(C2BSec);
-
-        Department ITDep = new Department("IT", "Information Technology", new ArrayList<>());
-        Section IT2ASec = new Section("IT2A", 35, null);
-        Section IT2BSec = new Section("IT2B", 35, null);
-        Section IT2CSec = new Section("IT2C", 35, null);
-        ITDep.getSectionList().add(IT2ASec);
-        ITDep.getSectionList().add(IT2BSec);
-        ITDep.getSectionList().add(IT2CSec);
-
-        Department ACTDep = new Department("ACT", "Associate in Computer Technology", new ArrayList<>());
-        Section ACT2ASec = new Section("ACT2A", 25, null);
-        ACTDep.getSectionList().add(ACT2ASec);
 
         while (true) {
             System.out.println("\nWelcome to KATS SCHOOL REGISTRATION SYSTEM");
@@ -138,7 +122,7 @@ public class Main {
                         boolean iRun = true;
                         while (iRun) {
                             System.out.println("\n-- INSTRUCTOR REGISTRATION --");
-                            System.out.println("[1] Save Instructor\n[2] Display Instructor\n[3] Update Instructor\n[4] Delete Instructor\n[5] Exit");
+                            System.out.println("[1] Add Instructor\n[2] Assign Instructor to Section\n[3] Get Instructor Details\n[4] Exit");
                             System.out.print("What do you want to do?: ");
                             int iChoice = jungkook.nextInt();
                             switch (iChoice) {
@@ -153,24 +137,28 @@ public class Main {
                                     String iCourse = jungkook.next();
                                     jungkook.nextLine();
 
-                                    registrar.saveInstructor(new Instructor(iId, iName, iCourse));
+                                    registrar.addInstructor(new Instructor(iId, iName, iCourse));
                                     break;
-                                case 2: // instructor registration: read
-                                    registrar.displayAllInstructor();
+                                case 2: // instructor registration: add to section
+                                    System.out.print("Enter Instructor ID: ");
+                                    int iId2 = jungkook.nextInt();
+                                    jungkook.nextLine();
+                                    System.out.print("Enter Section Name: ");
+                                    String iSecName = jungkook.next();
+                                    Section foundsec = registrar.findSection(iSecName);
+                                    if (foundsec == null) {
+                                        System.out.println("No Section found");
+                                    } else {
+                                        registrar.assignInstructorToSection(new Instructor(iId2), foundsec);
+                                    }
                                     break;
-                                case 3: // instructor registration: update
-                                    System.out.print("Enter Instructor ID to update: ");
-                                    int updInsId = jungkook.nextInt();
+                                case 3: // instructor registration: get deets
+                                    System.out.print("Enter Instructor ID: ");
+                                    int deetInsId = jungkook.nextInt();
+                                    registrar.getInstructorDetails(deetInsId);
 
-                                    registrar.updateInstructor(new Instructor(updInsId));
                                     break;
-                                case 4: // instructor registration: delete
-                                    System.out.print("Enter Instructor ID to remove: ");
-                                    int remInsId = jungkook.nextInt();
-
-                                    System.out.println(registrar.removeInstructor(new Instructor(remInsId)));
-                                    break;
-                                case 5: // instructor registration: exit
+                                case 4: // instructor registration: exit
                                     iRun = false;
                                     break;
                                 default: // instructor registration: mali mo

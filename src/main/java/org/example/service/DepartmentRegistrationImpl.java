@@ -23,7 +23,6 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
         departments.add(new Department(id, departmentName, instructorList));
         System.out.println("Successfully added!");
     }
-
     public void updateDepartment(String id) {
         for (int i = 0; i < departments.size(); i++) {
             if (departments.get(i).getId().equals(id)) {
@@ -37,7 +36,6 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
         }
         System.out.println("Department not found.");
     }
-
     public String removeDepartment(String id) {
         for (int i = 0; i < departments.size(); i++) {
             if (departments.get(i).getId().equals(id)) {
@@ -47,7 +45,6 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
         }
         return "Department not found.";
     }
-
     public List<Department> displayAllDep (){
         return departments.stream().toList();
     }
@@ -75,23 +72,23 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
         }
         for (int i = 0; i < departments.size(); i++) {
             Department d = departments.get(i);
-            System.out.println("\n DEPARTMENT: " + d.getName() + " (ID: " + d.getId() + ")");
+            System.out.println("\nDEPARTMENT: " + d.getName() + " (ID: " + d.getId() + ")");
 
             if (d.getSectionList().isEmpty()) {
                 System.out.println("Sections not found");
             } else {
                 for (int h = 0; h < d.getSectionList().size(); h++) {
                     Section s = d.getSectionList().get(h);
-                    System.out.println(" > SECTION: " + s.getSectionName() + " | Capacity: " + s.getMaxCapacity());
+                    System.out.println("  > SECTION: " + s.getSectionName() + " | Capacity: " + s.getMaxCapacity());
 
                     if (s.getInstructor() != null) {
-                        System.out.println(" >> INSTRUCTOR: " + s.getInstructor().getName() + " (ID: " + s.getInstructor().getID() + ")");
+                        System.out.println("     INSTRUCTOR: " + s.getInstructor().getName() + " (ID: " + s.getInstructor().getID() + ")");
                     } else {
                         System.out.println(" >> INSTRUCTOR: No instructor assigned");
                     }
 
                     if (s.getEnrolledStuds().isEmpty()) {
-                        System.out.println(" >> STUDENTS: No Students enrolled");
+                        System.out.println("     STUDENTS: No Students enrolled");
                     } else {
                         System.out.println(" >> STUDENTS: ");
                         for (int j = 0; j < s.getEnrolledStuds().size(); j++) {
@@ -102,5 +99,19 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
                 }
             }
         }
+    }
+
+    public Section findSection(String sectionName) {
+        for (int i=0; i < departments.size(); i++) {
+            Department d = departments.get(i);
+            List<Section> sections = d.getSectionList();
+            for (int j = 0; j< sections.size(); j++) {
+                Section s = sections.get(j);
+                if (s.getSectionName().equals(sectionName)) {
+                    return s;
+                }
+            }
+        }
+        return null;
     }
 }

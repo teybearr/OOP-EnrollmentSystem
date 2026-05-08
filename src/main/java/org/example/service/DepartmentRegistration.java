@@ -14,4 +14,5 @@ public interface DepartmentRegistration {
 
     void addSectiontoDept(String departmentId, Section section);
     void displayHierarchy();
+    Section findSection(String sectionName);
 }
