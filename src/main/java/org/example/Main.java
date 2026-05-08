@@ -40,6 +40,16 @@ public class Main {
                                     String sName = jungkook.next();
                                     System.out.print("Enter Program: ");
                                     String sProg = jungkook.next();
+                                    System.out.print("Enter Scholarship Type (FULL / PARTIAL / NONE): ");
+                                    String sScholar = jungkook.next();
+                                    Student newStudent = new Student(sId, sName, sProg);
+                                    newStudent.setScholarshipType(sScholar.toUpperCase());
+
+                                    try {
+                                        registrar.saveStudent(newStudent);
+                                    } catch (DupliStudIDExc e) {
+                                        System.out.println("Error: " + e.getMessage());
+                                    }
 
                                     try {
                                         registrar.saveStudent(new Student(sId, sName, sProg));
@@ -226,7 +236,7 @@ public class Main {
                         boolean tfRun = true;
                         while (tfRun) {
                             System.out.println("\n-- TUITION FEE PAYMENT --");
-                            System.out.println("[1] Calculate Tuition Fee\n[2] Make Payment\n[3] See Remaining Balance\n[4] Check if Fully Paid\n[5] Exit");
+                            System.out.println("[1] Calculate Tuition Fee\n[2] Calculate with Scholarship\n[3] Make Payment\n[4] See Remaining Balance\n[5] Check if Fully Paid\n[6] Exit");
                             System.out.print("What do you want to do?: ");
                             int tfChoice = getIntInput(jungkook);
                             switch (tfChoice) {
@@ -238,19 +248,36 @@ public class Main {
                                     double tuition = tfPayment.calculateTuitionFee(units, discount);
                                     System.out.println("Total Tuition Fee: " + tuition);
                                     break;
-                                case 2: // tuition fee calculator: pay
+                                case 2: // tuition fee calculator: calculate with scholarship
+                                    System.out.print("Enter Student ID: ");
+                                    int schStuId = getIntInput(jungkook);
+                                    Student schStu = registrar.findStudent(schStuId);
+
+                                    if (schStu == null) {
+                                        System.out.println("Student not found.");
+                                    } else {
+                                        System.out.print("Enter number of units: ");
+                                        int schUnits = getIntInput(jungkook);
+                                        double schDiscount = tfPayment.getDiscountRate(schStu);
+                                        double schTuition = tfPayment.calculateTuitionFee(schUnits, schDiscount);
+                                        System.out.println("Scholarship Type: " + schStu.getScholarshipType());
+                                        System.out.println("Discount Rate: " + (schDiscount * 100) + "%");
+                                        System.out.println("Total Tuition Fee after Scholarship: " + schTuition);
+                                    }
+                                    break;
+                                case 3: // tuition fee calculator: pay
                                     System.out.print("Enter payment amount: ");
                                     double amount = getDoubleInput(jungkook);
                                     tfPayment.makePayment(amount);
                                     System.out.println("Payment made!");
                                     break;
-                                case 3: // tuition fee calculator: read remaining balance
+                                case 4: // tuition fee calculator: read remaining balance
                                     System.out.println("Remaining Balance: " + tfPayment.getRemainingBalance());
                                     break;
-                                case 4: // tuition fee calculator: fully paid
+                                case 5: // tuition fee calculator: fully paid
                                     System.out.println("Fully Paid: " + tfPayment.isFullyPaid());
                                     break;
-                                case 5: // tuition fee calculator: exit
+                                case 6: // tuition fee calculator: exit
                                     tfRun = false;
                                     break;
                                 default: // tuition fee calculator: mali mo

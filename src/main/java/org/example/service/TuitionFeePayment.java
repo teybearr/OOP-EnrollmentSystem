@@ -1,5 +1,7 @@
 package org.example.service;
 
+import org.example.model.Student;
+
 public class TuitionFeePayment {
     private final double PRICE_PER_UNIT = 1000;
     private double balance;
@@ -29,5 +31,16 @@ public class TuitionFeePayment {
 
     public boolean isFullyPaid(){
         return Math.abs(balance) < 0.001;
+    }
+
+    public double getDiscountRate(Student student) {
+        switch (student.getScholarshipType()) {
+            case "FULL":
+                return 1.0;
+            case "PARTIAL":
+                return 0.5;
+            default:
+                return 0.0;
+        }
     }
 }
