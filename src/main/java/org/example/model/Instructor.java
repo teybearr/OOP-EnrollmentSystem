@@ -54,6 +54,7 @@ public class Instructor extends Person{
         return "Instructor {" +
                 "ID = '" + getID() + "' | " +
                 "Name = '" + getName() + "' | " +
-                "Course: '" + course + "'}";
+                "Course = '" + course + "' | " +
+                "Department = '" + department + "'}";
     }
 }

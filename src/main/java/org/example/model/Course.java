@@ -1,17 +1,35 @@
 package org.example.model;
 
+import java.util.ArrayList;
+
 public class Course {
     private String courseID;
     private String courseName;
     private String courseProgram;
+    private int units;
+    private ArrayList<Course> prerequisites;
 
     // constructors
-    public Course(){ }
-    public Course(String courseID){ this.courseID = courseID; }
+    public Course(){
+        this.prerequisites = new ArrayList<>();
+    }
+    public Course(String courseID){
+        this.courseID = courseID;
+        this.prerequisites = new ArrayList<>();
+    }
     public Course (String courseID, String courseName, String courseProgram){
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseProgram = courseProgram;
+        this.units = 0;
+        this.prerequisites = new ArrayList<>();
+    }
+    public Course (String courseID, String courseName, String courseProgram, int units){
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.courseProgram = courseProgram;
+        this.units = units;
+        this.prerequisites = new ArrayList<>();
     }
 
     // course id getters & setters
@@ -38,17 +56,28 @@ public class Course {
         this.courseProgram = courseProgram;
     }
 
-//    public void displayCourse() {
-//        System.out.println("\nCourse ID: " + getCourseID());
-//        System.out.println("Course Name: " + getCourseName());
-//        System.out.println("Course Program: " + getCourseProgram());
-//    }
+    // units getters & setters
+    public int getUnits() {
+        return units;
+    }
+    public void setUnits(int units) {
+        this.units = units;
+    }
+
+    // prerequisite getters & setters
+    public ArrayList<Course> getPrerequisites() {
+        return prerequisites;
+    }
+    public void addPrerequisites(Course course) {
+        prerequisites.add(course);
+    }
 
     @Override
     public String toString() {
         return "Course {" +
                 "ID = '" + courseID + "' | " +
                 "Name = '" + courseName + "' | " +
-                "Program = '" + courseProgram + "'}";
+                "Program = '" + courseProgram + "' | " +
+                "Units = '" + units + "'}";
     }
 }
