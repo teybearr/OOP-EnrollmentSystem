@@ -4,6 +4,8 @@ import org.example.service.CourseRegistration;
 import org.example.service.DepartmentRegistration;
 import org.example.service.InstructorRegistration;
 import org.example.service.StudentRegistration;
+import org.example.model.FullSectionExc;
+import org.example.model.Section;
 
 import java.util.List;
 
@@ -34,6 +36,12 @@ public class Registrar {
     }
     public String removeStudent(Student student){
         return SRegistration.removeStudent(student);
+    }
+    public void enrollStudentToSection(Student student, Section section) throws FullSectionExc {
+        SRegistration.enrollStudentToSection(student, section);
+    }
+    public Student findStudent(int id) {
+        return SRegistration.findStudent(id);
     }
 
     // course

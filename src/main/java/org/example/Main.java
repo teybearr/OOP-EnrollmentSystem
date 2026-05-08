@@ -2,8 +2,6 @@ package org.example;
 
 import org.example.model.*;
 import org.example.service.*;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -31,7 +29,7 @@ public class Main {
                         boolean sRun = true;
                         while (sRun) {
                             System.out.println("\n-- STUDENT REGISTRATION --");
-                            System.out.println("[1] Save Student\n[2] Display Student\n[3] Update Student\n[4] Delete Student\n[5] Exit");
+                            System.out.println("[1] Save Student\n[2] Display Student\n[3] Update Student\n[4] Delete Student\n[5] Enroll Student in Section\n[6] Exit");
                             System.out.print("What do you want to do?: ");
                             int sChoice = jungkook.nextInt();
                             switch (sChoice) {
@@ -64,7 +62,29 @@ public class Main {
 
                                     System.out.println(registrar.removeStudent(new Student(remStuId)));
                                     break;
-                                case 5: // student registration: exit
+                                case 5: // student registration: enroll tos ection
+                                    System.out.print("Enter Student ID: ");
+                                    int enrStuId = jungkook.nextInt();
+                                    jungkook.nextLine();
+                                    System.out.print("Enter Section Name: ");
+                                    String enrSecName = jungkook.nextLine();
+
+                                    Student foundStu = registrar.findStudent(enrStuId); // find actual student
+                                    Section enrSec = registrar.findSection(enrSecName);
+
+                                    if (foundStu == null) {
+                                        System.out.println("Student not found.");
+                                    } else if (enrSec == null) {
+                                        System.out.println("Section not found.");
+                                    } else {
+                                        try {
+                                            registrar.enrollStudentToSection(foundStu, enrSec);
+                                        } catch (FullSectionExc e) {
+                                            System.out.println("ERROR: " + e.getMessage());
+                                        }
+                                    }
+                                    break;
+                                case 6: // student registration: exit
                                     sRun = false;
                                     break;
                                 default: // student registration: mali mo

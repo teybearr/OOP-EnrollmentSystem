@@ -16,7 +16,8 @@ public class InstructorRegistrationImpl implements InstructorRegistration{
 
     public void assignInstructorToSection(Instructor instructor, Section section) {
         section.setInstructor(instructor);
-        System.out.println(instructor.getName() + "is successfully assigned to " + section.getSectionName());
+        instructor.addAssignedSection(section);
+        System.out.println(instructor.getName() + " is successfully assigned to " + section.getSectionName());
     }
 
     public void getInstructorDetails(int id) {

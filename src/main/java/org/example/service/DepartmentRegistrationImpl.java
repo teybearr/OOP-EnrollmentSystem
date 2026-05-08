@@ -84,15 +84,15 @@ public class DepartmentRegistrationImpl implements DepartmentRegistration {
                     if (s.getInstructor() != null) {
                         System.out.println("     INSTRUCTOR: " + s.getInstructor().getName() + " (ID: " + s.getInstructor().getID() + ")");
                     } else {
-                        System.out.println(" >> INSTRUCTOR: No instructor assigned");
+                        System.out.println("     INSTRUCTOR: No instructor assigned");
                     }
 
                     if (s.getEnrolledStuds().isEmpty()) {
                         System.out.println("     STUDENTS: No Students enrolled");
                     } else {
-                        System.out.println(" >> STUDENTS: ");
+                        System.out.println("     STUDENTS: ");
                         for (int j = 0; j < s.getEnrolledStuds().size(); j++) {
-                            Student stud = s.getEnrolledStuds().get(i);
+                            Student stud = s.getEnrolledStuds().get(j);
                             System.out.println("    - " + stud.getName() + " (ID: " + stud.getID() + ")");
                         }
                     }

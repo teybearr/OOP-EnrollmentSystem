@@ -15,7 +15,7 @@ public class StudentRegistrationImpl implements StudentRegistration {
         for (int i = 0; i < studentsList.size(); i++) {
             Student s = studentsList.get(i);
             if (s.getID() == student.getID()) {
-                throw new DupliStudIDExc(student.getID() + "already exists.");
+                throw new DupliStudIDExc(student.getID() + " already exists.");
             }
         }
         studentsList.add(student);
@@ -53,9 +53,18 @@ public class StudentRegistrationImpl implements StudentRegistration {
 
     public void enrollStudentToSection(Student student, Section section) throws FullSectionExc {
         if (section.getEnrolledStuds().size() >= section.getMaxCapacity()) {
-            throw new FullSectionExc("Can't enroll: " + section.getSectionName() + "is full now...");
+            throw new FullSectionExc("Can't enroll: " + section.getSectionName() + " is full now...");
         }
         section.getEnrolledStuds().add(student);
         System.out.println("Successfully enrolled!");
+    }
+
+    public Student findStudent(int id) {
+        for (Student s : studentsList) {
+            if (s.getID() == id) {
+                return s;
+            }
+        }
+        return null;
     }
 }
