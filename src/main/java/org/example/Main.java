@@ -15,6 +15,7 @@ public class Main {
         InstructorRegistrationImpl instructorRegistration = new InstructorRegistrationImpl();
         DepartmentRegistrationImpl departmentRegistration = new DepartmentRegistrationImpl();
         Registrar registrar = new Registrar(studentRegistration, courseRegistration, instructorRegistration, departmentRegistration);
+        TuitionFeePayment tfPayment = new TuitionFeePayment();
 
         Department CSDep = new Department("CS", "Computer Science", new ArrayList<>());
         Section C2ASec = new Section("C2A", 35, null);
@@ -214,7 +215,6 @@ public class Main {
                         }
                         break;
                     case 5: // tuition fee calculator
-                        TuitionFeePayment tfPayment = new TuitionFeePayment();
                         boolean tfRun = true;
                         while (tfRun) {
                             System.out.println("\n-- TUITION FEE PAYMENT --");

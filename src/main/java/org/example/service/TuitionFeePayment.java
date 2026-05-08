@@ -6,15 +6,21 @@ public class TuitionFeePayment {
     private double totalTuition;
 
     public double calculateTuitionFee (int units, double discountRate){
+        if (units <= 0) throw new IllegalArgumentException("Units can't be negative");
+        if (discountRate < 0 || discountRate > 1) throw new IllegalArgumentException("Discount rate should be between 0 and 1");
+
         totalTuition = units * PRICE_PER_UNIT;
         if (discountRate!=0){
             totalTuition = totalTuition - (totalTuition * discountRate);
         }
+        balance = totalTuition;
         return totalTuition;
     }
 
     public void makePayment (double amount){
-        balance = totalTuition-amount;
+        if (amount <= 0) throw new IllegalArgumentException("Payment can't be negative numbers");
+        if (amount > balance) throw new IllegalArgumentException("Payment exceeds remaining balance");
+        balance -= amount;
     }
 
     public double getRemainingBalance(){
@@ -22,6 +28,6 @@ public class TuitionFeePayment {
     }
 
     public boolean isFullyPaid(){
-        return balance == 0 ? true : false;
+        return Math.abs(balance) < 0.001;
     }
 }
