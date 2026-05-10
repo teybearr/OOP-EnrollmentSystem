@@ -12,4 +12,5 @@ public interface InstructorRegistration {
     void addInstructor(Instructor instructor);
     void assignInstructorToSection(Instructor instructor, Section section);
     void getInstructorDetails(int id);
+    Instructor findInstructor(int id);
 }

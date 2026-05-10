@@ -24,11 +24,20 @@ public class InstructorRegistrationImpl implements InstructorRegistration{
         for (int i = 0; i < instructorsList.size(); i++) {
             Instructor inst = instructorsList.get(i);
             if (inst.getID() == id) {
-                System.out.println(i);
+                System.out.println(inst);
                 return;
             }
         }
         System.out.println("Instructor not found");
+    }
+
+    public Instructor findInstructor(int id) {
+        for (Instructor inst : instructorsList) {
+            if (inst.getID() == id) {
+                return inst;
+            }
+        }
+        return null;
     }
 
     //private Scanner jungkook = new Scanner(System.in);

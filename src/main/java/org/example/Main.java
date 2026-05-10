@@ -50,12 +50,6 @@ public class Main {
                                     } catch (DupliStudIDExc e) {
                                         System.out.println("Error: " + e.getMessage());
                                     }
-
-                                    try {
-                                        registrar.saveStudent(new Student(sId, sName, sProg));
-                                    } catch (DupliStudIDExc e) {
-                                        System.out.println("Error: " + e.getMessage());
-                                    }
                                     break;
                                 case 2: // student registration: read
                                     registrar.displayAllStudent();
@@ -176,10 +170,13 @@ public class Main {
                                     System.out.print("Enter Section Name: ");
                                     String iSecName = jungkook.next();
                                     Section foundsec = registrar.findSection(iSecName);
+                                    Instructor foundins = registrar.findInstructor(iId2);
                                     if (foundsec == null) {
                                         System.out.println("No Section found");
+                                    } else if (foundins == null) {
+                                        System.out.println("No Instructor found");
                                     } else {
-                                        registrar.assignInstructorToSection(new Instructor(iId2), foundsec);
+                                        registrar.assignInstructorToSection(foundins, foundsec);
                                     }
                                     break;
                                 case 3: // instructor registration: get deets

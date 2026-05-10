@@ -72,6 +72,9 @@ public class Registrar {
     public Section findSection(String sectionName) {
         return DRegistration.findSection(sectionName);
     }
+    public Instructor findInstructor(int id) {
+        return IRegistration.findInstructor(id);
+    }
 
 //  department
     public String saveDepartment(String id, String name, List<Instructor> instructorList){

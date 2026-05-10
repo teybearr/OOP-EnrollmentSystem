@@ -46,7 +46,7 @@ class TuitionFeePaymentTest {
     }
 
     @Test
-    @DisplayName("Is Not Fully Paid")
+    @DisplayName("Is Fully Paid")
     void shouldReturnTrueIfFullyPaid() {
         tuiFeePayment.calculateTuitionFee(3, 0.10);
         tuiFeePayment.makePayment(2700);
